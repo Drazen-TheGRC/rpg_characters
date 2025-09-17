@@ -3,6 +3,8 @@ import 'package:rpg_characters/screens/home/character_card.dart';
 import 'package:rpg_characters/shared/styled_button.dart';
 import 'package:rpg_characters/shared/styled_text.dart';
 
+import '../../models/character.dart';
+
 class Home extends StatefulWidget {
   const Home({super.key});
 
@@ -11,16 +13,6 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  List characters = [
-    "Drazen",
-    "Mario",
-    "Luigi",
-    "Peach",
-    "Toad",
-    "Browser",
-    "Koopa",
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
