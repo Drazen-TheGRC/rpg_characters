@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rpg_characters/screens/create/create.dart';
 import 'package:rpg_characters/screens/home/home.dart';
 import 'package:rpg_characters/theme.dart';
 
@@ -7,7 +8,7 @@ void main() {
     MaterialApp(
       theme: primaryTheme,
       debugShowCheckedModeBanner: false,
-      home: Home(),
+      home: Create(),
     ),
   );
 }
