@@ -9,12 +9,16 @@ mixin Stats {
     if (_points > 0) {
       if (stat == "health") {
         _health++;
+        _points--;
       } else if (stat == "attack") {
         _attack++;
+        _points--;
       } else if (stat == "defense") {
         _defense++;
+        _points--;
       } else if (stat == "skill") {
         _skill++;
+        _points--;
       }
     }
   }

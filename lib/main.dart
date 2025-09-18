@@ -8,7 +8,7 @@ void main() {
     MaterialApp(
       theme: primaryTheme,
       debugShowCheckedModeBanner: false,
-      home: Create(),
+      home: Home(),
     ),
   );
 }

@@ -73,4 +73,7 @@ ThemeData primaryTheme = ThemeData(
     selectionColor: AppColors.textColor.withValues(alpha: 0.25),
     selectionHandleColor: AppColors.textColor,
   ),
+
+  // Dialog theme
+  dialogTheme: DialogThemeData(backgroundColor: AppColors.secondaryAccent),
 );
