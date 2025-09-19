@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:rpg_characters/screens/create/create.dart';
+import 'package:provider/provider.dart';
+import 'package:rpg_characters/screens/create/create_screen.dart';
 import 'package:rpg_characters/screens/home/character_card.dart';
+import 'package:rpg_characters/services/character_store.dart';
 import 'package:rpg_characters/shared/styled_button.dart';
 import 'package:rpg_characters/shared/styled_text.dart';
-
-import '../../models/character.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -24,10 +24,16 @@ class _HomeState extends State<Home> {
           children: [
             //
             Expanded(
-              child: ListView.builder(
-                itemCount: characters.length,
-                itemBuilder: (context, index) {
-                  return CharacterCard(character: characters[index]);
+              child: Consumer<CharacterStore>(
+                builder: (context, value, child) {
+                  return ListView.builder(
+                    itemCount: value.getCharacters.length,
+                    itemBuilder: (context, index) {
+                      return CharacterCard(
+                        character: value.getCharacters[index],
+                      );
+                    },
+                  );
                 },
               ),
             ),
@@ -36,7 +42,7 @@ class _HomeState extends State<Home> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Create()),
+                  MaterialPageRoute(builder: (context) => CreateScreen()),
                 );
               },
               child: StyledHeading(text: "Create New"),
