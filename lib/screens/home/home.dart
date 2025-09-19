@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:rpg_characters/screens/create/create_screen.dart';
 import 'package:rpg_characters/screens/home/character_card.dart';
+import 'package:rpg_characters/services/character_store.dart';
 import 'package:rpg_characters/shared/styled_button.dart';
 import 'package:rpg_characters/shared/styled_text.dart';
 
@@ -11,16 +14,6 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  List characters = [
-    "Drazen",
-    "Mario",
-    "Luigi",
-    "Peach",
-    "Toad",
-    "Browser",
-    "Koopa",
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,16 +24,27 @@ class _HomeState extends State<Home> {
           children: [
             //
             Expanded(
-              child: ListView.builder(
-                itemCount: characters.length,
-                itemBuilder: (context, index) {
-                  return CharacterCard(character: characters[index]);
+              child: Consumer<CharacterStore>(
+                builder: (context, value, child) {
+                  return ListView.builder(
+                    itemCount: value.getCharacters.length,
+                    itemBuilder: (context, index) {
+                      return CharacterCard(
+                        character: value.getCharacters[index],
+                      );
+                    },
+                  );
                 },
               ),
             ),
             //
             StyledButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => CreateScreen()),
+                );
+              },
               child: StyledHeading(text: "Create New"),
             ),
           ],

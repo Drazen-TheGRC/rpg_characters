@@ -59,4 +59,21 @@ ThemeData primaryTheme = ThemeData(
     margin: EdgeInsets.only(bottom: 16),
     shadowColor: Colors.transparent,
   ),
+
+  // Input decoration theme
+  inputDecorationTheme: InputDecorationTheme(
+    prefixIconColor: AppColors.textColor,
+    filled: true,
+    fillColor: AppColors.secondaryColor.withValues(alpha: 0.5),
+    border: InputBorder.none,
+    labelStyle: TextStyle(color: AppColors.textColor),
+  ),
+
+  textSelectionTheme: TextSelectionThemeData(
+    selectionColor: AppColors.textColor.withValues(alpha: 0.25),
+    selectionHandleColor: AppColors.textColor,
+  ),
+
+  // Dialog theme
+  dialogTheme: DialogThemeData(backgroundColor: AppColors.secondaryAccent),
 );
