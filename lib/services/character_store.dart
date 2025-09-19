@@ -11,7 +11,7 @@ class CharacterStore extends ChangeNotifier {
       id: '1',
       name: 'Alexis The Nick',
       vocation: Vocation.raider,
-      slogan: "Let's play Roblox...",
+      slogan: "Mom whats for dinner?",
     ),
     Character(
       id: '2',
