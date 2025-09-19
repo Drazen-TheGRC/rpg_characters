@@ -9,9 +9,9 @@ class CharacterStore extends ChangeNotifier {
   final List<Character> _characters = [
     Character(
       id: '1',
-      name: 'Alexis The Nick',
+      name: 'Alexis The Sniffer',
       vocation: Vocation.raider,
-      slogan: "Mom whats for dinner?",
+      slogan: "Farts make me happy!!!",
     ),
     Character(
       id: '2',
