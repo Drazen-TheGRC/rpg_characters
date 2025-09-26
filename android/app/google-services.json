@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "131333198303",
+    "project_id": "flutter-rpg-test-9d0d8",
+    "storage_bucket": "flutter-rpg-test-9d0d8.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:131333198303:android:6058dcef72a8e723ca346a",
+        "android_client_info": {
+          "package_name": "brightbraingames.com.rpg_characters"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDx7FyXFGvM628hEH9UEiIi-x_XPuLbVuc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
