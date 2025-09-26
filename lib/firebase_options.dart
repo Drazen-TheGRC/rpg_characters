@@ -65,4 +65,5 @@ class DefaultFirebaseOptions {
     storageBucket: 'flutter-rpg-test-9d0d8.firebasestorage.app',
     iosBundleId: 'brightbraingames.com.rpgCharacters',
   );
+
 }
