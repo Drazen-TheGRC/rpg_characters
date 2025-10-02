@@ -1,5 +1,6 @@
 import 'dart:ffi';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:rpg_characters/models/skill.dart';
 import 'package:rpg_characters/models/stats.dart';
 import 'package:rpg_characters/models/vocation.dart';
@@ -36,10 +37,53 @@ class Character with Stats {
 
   bool get getIsFav => _isFav;
 
-  // Setters
-}
+  // Character to firebase (map)
+  Map<String, dynamic> toFirestore() {
+    return {
+      "name": name,
+      "slogan": slogan,
+      "isFav": _isFav,
+      "vocation": vocation.toString(),
+      "skills": skills.map((skill) {
+        skill.id;
+      }).toList(),
+      "stats": getStatsAsMap,
+      "points": getPoints,
+    };
+  }
 
-// dummy character data
+  // Character from firestore
+  factory Character.fromFirestore(
+    DocumentSnapshot<Map<String, dynamic>> snapshot,
+    SnapshotOptions? options,
+  ) {
+    // Get data from snapshot
+    final data = snapshot.data()!;
+    // Make Character instance
+    final character = Character(
+      name: data["name"] as String,
+      slogan: data["slogan"] as String,
+      vocation: Vocation.values.firstWhere(
+        (vocation) => vocation.toString() == data["vocation"],
+      ),
+      id: snapshot.id,
+    );
+
+    // Update skills
+    for (String id in data["skills"]) {
+      Skill skill = allSkills.firstWhere((skill) => skill.id == id);
+      character.updateSkill(skill);
+    }
+    // Set isFav
+    if (data["isFav"] == true) {
+      character.toggleIsFav();
+    }
+    // Set points and points
+    character.serStats(points: data["points"], stats: data["stats"]);
+
+    return character;
+  }
+}
 
 List<Character> characters = [
   Character(

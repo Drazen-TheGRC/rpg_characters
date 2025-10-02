@@ -60,4 +60,15 @@ mixin Stats {
     {"title": "defense", "value": _defense.toString()},
     {"title": "skill", "value": _skill.toString()},
   ];
+
+  // Setters
+
+  void serStats({required int points, required Map<String, dynamic> stats}) {
+    _points = points;
+
+    _health = stats["health"];
+    _attack = stats["attack"];
+    _defense = stats["defense"];
+    _skill = stats["skill"];
+  }
 }
