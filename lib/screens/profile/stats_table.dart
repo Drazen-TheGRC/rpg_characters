@@ -13,6 +13,7 @@ class StatsTable extends StatefulWidget {
 }
 
 class _StatsTableState extends State<StatsTable> {
+  double turns = 0.0;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -25,11 +26,15 @@ class _StatsTableState extends State<StatsTable> {
             padding: EdgeInsets.all(16),
             child: Row(
               children: [
-                Icon(
-                  Icons.star,
-                  color: widget.character.getPoints > 0
-                      ? Colors.yellow
-                      : Colors.grey,
+                AnimatedRotation(
+                  turns: turns,
+                  duration: const Duration(microseconds: 500),
+                  child: Icon(
+                    Icons.star,
+                    color: widget.character.getPoints > 0
+                        ? Colors.yellow
+                        : Colors.grey,
+                  ),
                 ),
                 SizedBox(width: 20),
                 StyledTitle(text: "Stats points available"),
@@ -76,6 +81,7 @@ class _StatsTableState extends State<StatsTable> {
                         onPressed: () {
                           setState(() {
                             widget.character.increaseStat(stat["title"]!);
+                            turns += 0.5;
                           });
                         },
                         icon: Icon(
@@ -95,6 +101,7 @@ class _StatsTableState extends State<StatsTable> {
                         onPressed: () {
                           setState(() {
                             widget.character.decreaseStat(stat["title"]!);
+                            turns -= 0.5;
                           });
                         },
                         icon: Icon(

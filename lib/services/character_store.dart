@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:rpg_characters/services/firestore_service.dart';
 
 import '../models/character.dart';
-import '../models/vocation.dart';
 
 class CharacterStore extends ChangeNotifier {
   // dummy character data

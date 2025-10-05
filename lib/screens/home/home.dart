@@ -36,8 +36,39 @@ class _HomeState extends State<Home> {
                   return ListView.builder(
                     itemCount: value.getCharacters.length,
                     itemBuilder: (context, index) {
-                      return CharacterCard(
-                        character: value.getCharacters[index],
+                      return Dismissible(
+                        key: ValueKey(value.getCharacters[index].id),
+                        // confirmDismiss: (direction) async {
+                        //   // Show a dialog before deleting
+                        //   return await showDialog(
+                        //     context: context,
+                        //     builder: (ctx) => AlertDialog(
+                        //       title: Text("Confirm"),
+                        //       content: Text(
+                        //         "Do you really want to delete this item?",
+                        //       ),
+                        //       actions: [
+                        //         TextButton(
+                        //           onPressed: () => Navigator.of(ctx).pop(false),
+                        //           child: Text("Cancel"),
+                        //         ),
+                        //         TextButton(
+                        //           onPressed: () => Navigator.of(ctx).pop(true),
+                        //           child: Text("Delete"),
+                        //         ),
+                        //       ],
+                        //     ),
+                        //   );
+                        // },
+                        onDismissed: (direction) {
+                          Provider.of<CharacterStore>(
+                            context,
+                            listen: false,
+                          ).removeCharacter(value.getCharacters[index]);
+                        },
+                        child: CharacterCard(
+                          character: value.getCharacters[index],
+                        ),
                       );
                     },
                   );

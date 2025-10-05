@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:rpg_characters/models/character.dart';
+import 'package:rpg_characters/screens/profile/heart.dart';
 import 'package:rpg_characters/screens/profile/skill_list.dart';
 import 'package:rpg_characters/screens/profile/stats_table.dart';
 import 'package:rpg_characters/services/character_store.dart';
@@ -22,27 +23,39 @@ class Profile extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             // Basic info - image, vocation, description
-            Container(
-              padding: EdgeInsets.all(16),
-              color: AppColors.secondaryColor.withValues(alpha: 0.3),
-              child: Row(
-                children: [
-                  Image.asset(
-                    "assets/img/vocations/${character.vocation.image}",
-                    width: 140,
+            Stack(
+              children: [
+                Container(
+                  padding: EdgeInsets.all(16),
+                  color: AppColors.secondaryColor.withValues(alpha: 0.3),
+                  child: Row(
+                    children: [
+                      Hero(
+                        tag: character.id,
+                        child: Image.asset(
+                          "assets/img/vocations/${character.vocation.image}",
+                          width: 140,
+                        ),
+                      ),
+                      SizedBox(width: 20),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            StyledHeading(text: character.vocation.title),
+                            StyledText(text: character.vocation.description),
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
-                  SizedBox(width: 20),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        StyledHeading(text: character.vocation.title),
-                        StyledText(text: character.vocation.description),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
+                ),
+                Positioned(
+                  top: 10,
+                  right: 10,
+                  child: Heart(character: character),
+                ),
+              ],
             ),
 
             // Weapon, ability & slogan
