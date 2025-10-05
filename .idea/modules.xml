@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/rpg_characters.iml" filepath="$PROJECT_DIR$/rpg_characters.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android/rpg_characters_android.iml" filepath="$PROJECT_DIR$/android/rpg_characters_android.iml" />
     </modules>
   </component>
 </project>

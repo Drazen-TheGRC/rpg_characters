@@ -1,13 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:rpg_characters/screens/create/create_screen.dart';
 import 'package:rpg_characters/screens/home/home.dart';
+import 'package:rpg_characters/services/character_store.dart';
 import 'package:rpg_characters/theme.dart';
 
-void main() {
+// This is Firebase stuff
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+
+// ...
+
+void main() async {
+  // Firebase stuff
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
+  // Flutter stuff
   runApp(
-    MaterialApp(
-      theme: primaryTheme,
-      debugShowCheckedModeBanner: false,
-      home: Home(),
+    ChangeNotifierProvider(
+      create: (context) => CharacterStore(),
+      child: MaterialApp(
+        theme: primaryTheme,
+        debugShowCheckedModeBanner: false,
+        home: Home(),
+      ),
     ),
   );
 }
